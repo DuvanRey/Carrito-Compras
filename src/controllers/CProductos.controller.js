@@ -33,9 +33,9 @@ export const categorias = async (req, res) => {                       //estudiar
             })
         }
 
-        return res.status(200).json({ message: 'Tienda obtenida con exito', data: categorias })
+        return res.status(200).json({ message: 'Consultado con exito', data: categorias })
     } catch (error) {
         console.log(error)
-        return res.status(400).json({ message: 'error al obtener Tienda', error })
+        return res.status(400).json({ message: 'error al consultar', error })
     }
 }

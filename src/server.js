@@ -22,12 +22,9 @@ app.get('/', (req,res)=>{
 
 
 tiendaDB.authenticate()
-	.then(() => console.log("Database manager Authenticated!!!"))
+	.then(() => console.log("Database carrito!!!"))
 	.catch((err) => console.log(err));
 
-tiendaDB.sync()
-	.then(() => console.log("Database manager Synced!!!"))
-	.catch((err) => console.log(err));
 
 app.use('/api', router)
 

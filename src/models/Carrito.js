@@ -24,5 +24,8 @@ export const Carrito = tiendaDB.define("carritos", {
         defaultValue: DataTypes.NOW,
         field: 'createdAt'
     },
+},
+{
+    timestamps: false
 });
 
