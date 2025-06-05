@@ -1,9 +1,8 @@
 import { DataTypes } from "sequelize";
-import { talent } from "../../config/db.js";
-import { EmpresaPostulacion } from "./EmpresaPostulacion.js";
-import { EmpresaEtiqueta } from "./EmpresaEtiqueta.js";
+import { tiendaDB } from "../config/DB.js";
 
-export const UserAdministrador = talent.define("usersAdministradores", {
+
+export const UserAdministrador = tiendaDB.define("usersAdministradores", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

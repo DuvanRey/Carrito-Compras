@@ -8,6 +8,16 @@ export const Carrito = tiendaDB.define("carritos", {
         primaryKey: true,
         autoIncrement: true,
     },
+    idTienda: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        comment: "Tienda",
+        references: {
+            model: 'tiendas',
+            key: 'id'
+        },
+        field: 'idTienda'
+    },
     createdBy: {
         type: DataTypes.INTEGER,
         allowNull: true,

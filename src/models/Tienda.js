@@ -28,13 +28,6 @@ export const Tienda = tiendaDB.define("tiendas", {
         allowNull: false,
         field: 'descripcion',
     },
-
-    estado: {
-        type: DataTypes.TINYINT,
-        allowNull: false,
-        field: 'estado',   
-    },
-
     foto: {
         type: DataTypes.STRING(120),
         allowNull: false,
@@ -44,11 +37,6 @@ export const Tienda = tiendaDB.define("tiendas", {
         type: DataTypes.STRING(120),
         allowNull: false,
         field: 'fotoMini',   
-    },
-    valorUnidad: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        field: 'valorUnidad',   
     },
     telefono: {
         type: DataTypes.INTEGER,

@@ -2,6 +2,7 @@ import { Pedido } from "../models/Pedido.js";
 import { PedidoProducto } from "../models/PedidoProducto.js";
 import { Producto } from "../models/Producto.js";
 import { Tienda } from "../models/Tienda.js";
+import { UserCliente } from "../models/UserCliente.js";
 
 export const listarPedidos = async (req, res) => {
     try {
@@ -15,16 +16,14 @@ export const listarPedidos = async (req, res) => {
                 'estado'
             ],
             where: {
-                createdBy: 1
+                createdBy: req.user.id,
             },
             raw: true
         });
         for (const pedido of pedidos) {
-            console.log("🚀 ~ listarPedidos ~ pedido:", pedido)
             const tienda = await Tienda.findOne({
                 attributes: [
                     'nombre',
-
                 ],
                 where: {
                     id: pedido.idTienda
@@ -57,13 +56,24 @@ export const detallespedidos = async (req, res) => {
                 'observaciones',
                 'valorTotal',
                 'createdAt',
-                'estado'
+                'estado',
+                'createdBy',
             ],
             where: {
                 id: params.idPedido,
             },
             raw: true
         });
+
+        const cliente = await UserCliente.findOne({
+            attributes: ['nombre', 'apellido', 'direccion'],
+            where: {
+                idUser: pedido.createdBy
+            },
+            raw: true
+        });
+        pedido.nombreCompleto = cliente.nombre + ' ' + cliente.apellido;
+        pedido.direccion = cliente.direccion;
 
         const productosPedidos = await PedidoProducto.findAll({
             attributes: [
@@ -80,12 +90,13 @@ export const detallespedidos = async (req, res) => {
 
         for (const productoPedido of productosPedidos) {
             const producto = await Producto.findOne({
-                attributes: ['nombre'],
+                attributes: ['nombre', 'imagen'],
                 where: {
                     id: productoPedido.idProducto
                 }
             });
             productoPedido.producto = producto.nombre
+            productoPedido.imagen = producto.imagen;
         }
         pedido.productos = productosPedidos
         
