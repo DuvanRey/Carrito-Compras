@@ -11,6 +11,7 @@ import { router } from './routes/index.js'
 
 const app = express();
 const PORT = 4000;
+app.use(cors());
 
 
 app.use(passport.initialize());
@@ -24,7 +25,6 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 
 app.use(fileUpload());
-app.use(cors());
 
 
 app.get('/', (req,res)=>{
