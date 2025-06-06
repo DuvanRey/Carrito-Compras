@@ -75,5 +75,6 @@ router.get('/cliente/select/tiendas', authMiddleware, CTiendacontroller.selectTi
 
 //Manager
 router.post('/manager/tienda', authMiddleware, Managercontroller.crearTienda);
+router.get('/manager/tiendas', authMiddleware, Managercontroller.listarTiendas);
 
 export { router }

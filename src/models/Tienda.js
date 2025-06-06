@@ -53,6 +53,11 @@ export const Tienda = tiendaDB.define("tiendas", {
         allowNull: false,
         field: 'apertura',   
     },
+    estado: {
+        type: DataTypes.TINYINT,
+        allowNull: false,
+        field: 'estado',   
+    },
     createdBy: {
         type: DataTypes.INTEGER,
         allowNull: true,

@@ -34,7 +34,7 @@ export const User = tiendaDB.define("users", {
         field: 'password',
     },
 
-    actualizarpassword: {
+    actualizarPassword: {
         type: DataTypes.TINYINT,
         allowNull: false,
         field: 'actualizarpassword',   
