@@ -126,8 +126,8 @@ export const registerUserClient = async (req, res) => {
             nombre: body.nombre,
             apellido: body.apellido,
             fechaNacimiento: body.fechaNacimiento,
-            createdBy: req.user.id,
-            updatedBy: req.user.id
+            createdBy: user.id,
+            updatedBy: user.id
         });
 
         return res.status(200).json({ message: 'Cliente registrado correctamente', data: true });

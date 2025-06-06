@@ -66,7 +66,7 @@ router.get('/manager/usuarios-administrador/:idUserAdmin', authMiddleware, CUser
 router.get('/manager/usuarios-administrador', authMiddleware, CUserController.getUsersAdmin);
 
 router.get('/cliente/user', authMiddleware, CUserController.getUserClient);
-router.post('/cliente/registro', authMiddleware, CUserController.registerUserClient);
+router.post('/cliente/registro', CUserController.registerUserClient);
 
 
 router.get('/cliente/select/tiendas', authMiddleware, CTiendacontroller.selectTiendas);
